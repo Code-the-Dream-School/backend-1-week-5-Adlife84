@@ -1,10 +1,15 @@
 class Timer
-  #write your code here
+  #write your code here Time.new(2002, 10, 31, 2, 2, 2)
+  attr_accessor :seconds
+
   def initialize
-    @timer = Time.new(0)
+    @timer = Time.new(2020)
+    @seconds ||= 0
   end
 
   def seconds
+    puts "Hello from seconds"
+    @timer = @timer + @seconds
     @timer.sec
   end
 
@@ -14,5 +19,12 @@ class Timer
 end
 
 timer = Timer.new
+
 puts timer
-puts timer.time_string
+puts timer.seconds
+
+timer.seconds = 66
+
+puts timer.seconds
+puts "From time_string: #{timer.time_string}"
+
