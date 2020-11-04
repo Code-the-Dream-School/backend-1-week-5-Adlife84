@@ -44,6 +44,7 @@ class Timer
   end
 
   def time_string
+    puts ""
     splitSecondsToTime
     to_s
   end
