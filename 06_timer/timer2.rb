@@ -21,7 +21,7 @@ class Timer
   end
 
   def seconds
-    @seconds
+    puts "Hello from seconds method: @seconds is: #{@setSeconds}"
   end
 
   def to_s
@@ -40,12 +40,12 @@ class Timer
     else 
       s = @s.to_s
     end
-    return "#{h}:#{m}:#{s}"
+  
+    "#{h}:#{m}:#{s}"
   end
 
   def time_string
     splitSecondsToTime
-    to_s
   end
 end
 
