@@ -4,17 +4,15 @@ class Timer
 
   def initialize(seconds = 0)
     @seconds = seconds
-    @h = 0
-    @m = 0
-    @s = 0
+    @timeArray = []
   end
 
-  def splitSecondsToTime
+  def splitSecondsToTimeArray
       sec = @seconds
       
-      @h = sec / 3600 % 24 
-      @m = sec / 60 % 60 
-      @s = sec % 60
+      @timeArray[0] = sec / 3600 % 24
+      @timeArray[1] = sec / 60 % 60
+      @timeArray[2] = sec % 60
   end
 
   def seconds
@@ -22,33 +20,34 @@ class Timer
   end
 
   def to_s
-    if @h < 10 
-      h = "0#{@h}"
-    else
-      h = @h.to_s
+    time = @timeArray
+  
+    time.each_with_index do |item, index|
+      if item < 10 
+        time[index] = "0#{item}"
+      else
+        time[index] = item.to_s
+      end
     end
-    if @m < 10 
-      m = "0#{@m}"
-    else
-      m = @m.to_s
-    end
-    if @s < 10 
-      s = "0#{@s}"
-    else 
-      s = @s.to_s
-    end
-    "#{h}:#{m}:#{s}"
-  end
 
+    return time = time.join(":")
+  end
+   
+    
   def time_string
-    splitSecondsToTime
+    splitSecondsToTimeArray
     to_s
   end
-  
 end
 
 
 # My tests 
+
+timer = Timer.new
+
+puts timer.splitSecondsToTimeArray
+puts timer.time_string
+
 # Expecting 0
 timer = Timer.new
 puts timer.seconds
@@ -68,18 +67,3 @@ puts timer.time_string
 # Expecting "01:06:40"
 timer.seconds = 4000
 puts timer.time_string
-
-
-
-
-# timer2 = Timer.new
-# puts timer2.seconds = 12
-# puts timer2.time_string      
-
-# timer3 = Timer.new
-# puts timer3.seconds = 66
-# puts timer3.time_string      
-
-# timer4 = Timer.new
-# puts timer4.seconds = 4000
-# puts timer4.time_string      
