@@ -15,9 +15,6 @@ class Timer
       @h = sec / 3600 % 24 
       @m = sec / 60 % 60 
       @s = sec % 60
-      puts "Hours: #{@h}"
-      puts "Minuts: #{@m}"
-      puts "Seconds: #{@s}" 
   end
 
   def seconds
@@ -40,49 +37,49 @@ class Timer
     else 
       s = @s.to_s
     end
-    return "#{h}:#{m}:#{s}"
+    "#{h}:#{m}:#{s}"
   end
 
   def time_string
-    puts ""
     splitSecondsToTime
     to_s
   end
+  
 end
 
 
 # My tests 
+# Expecting 0
 timer = Timer.new
 puts timer.seconds
-puts timer.time_string
-puts "Result: #{timer.to_s}"
 
-puts timer.seconds = 9
+# Expecting "00:00:00"
+timer.seconds = 0
 puts timer.time_string
-puts "Result: #{timer.to_s}"
 
-puts timer.seconds = 29
+# Expecting "00:00:12"
+timer.seconds = 12
 puts timer.time_string
-puts "Result: #{timer.to_s}"
 
-puts timer.seconds = 69
+# Expecting "00:01:06"
+timer.seconds = 66
 puts timer.time_string
-puts "Result: #{timer.to_s}"
 
-puts timer.seconds = 4000
+# Expecting "01:06:40"
+timer.seconds = 4000
 puts timer.time_string
-puts "Result: #{timer.to_s}"
+
 
 
 
 # timer2 = Timer.new
 # puts timer2.seconds = 12
-# puts timer2.time_string      # Expecting "00:00:12"
+# puts timer2.time_string      
 
 # timer3 = Timer.new
 # puts timer3.seconds = 66
-# puts timer3.time_string      # Expecting "00:01:06"
+# puts timer3.time_string      
 
 # timer4 = Timer.new
 # puts timer4.seconds = 4000
-# puts timer4.time_string      # Expecting "01:06:40"
+# puts timer4.time_string      
